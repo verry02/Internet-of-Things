@@ -1,0 +1,379 @@
+[
+    {
+        "id": "b3f050e1857134a0",
+        "type": "tab",
+        "label": "Alarm-clock",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5d34c2c37302f8bb",
+        "type": "mqtt out",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "topic": "gruppo22/settSveglia",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b4be68a9c65618b0",
+        "x": 760,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3f6973f5cd84cb56",
+        "type": "ui_button",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "group": "6a5d45f9bd6ff906",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "disattiva_sveglia",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "c313b00ac7a32c1a",
+                "5d34c2c37302f8bb"
+            ]
+        ]
+    },
+    {
+        "id": "e03425534bbbf4e5",
+        "type": "debug",
+        "z": "b3f050e1857134a0",
+        "name": "dati",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "bdd13ae749a2101f",
+        "type": "mqtt in",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "topic": "gruppo22/sensore",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "b4be68a9c65618b0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "e03425534bbbf4e5",
+                "0281746f3b4674d9",
+                "ab6eaede44bd9ca7"
+            ]
+        ]
+    },
+    {
+        "id": "a992e350bb23d3cb",
+        "type": "ui_form",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "label": "Imposta_orario",
+        "group": "6a5d45f9bd6ff906",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Orario",
+                "value": "orario",
+                "type": "time",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "orario": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "5d34c2c37302f8bb",
+                "242493679acc9239"
+            ]
+        ]
+    },
+    {
+        "id": "242493679acc9239",
+        "type": "debug",
+        "z": "b3f050e1857134a0",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c313b00ac7a32c1a",
+        "type": "debug",
+        "z": "b3f050e1857134a0",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0281746f3b4674d9",
+        "type": "change",
+        "z": "b3f050e1857134a0",
+        "name": "rinviata",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.rinviata",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "ec5b131a5f9608cd"
+            ]
+        ]
+    },
+    {
+        "id": "ab6eaede44bd9ca7",
+        "type": "change",
+        "z": "b3f050e1857134a0",
+        "name": "disattivata",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.disattivata",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 40,
+        "wires": [
+            [
+                "04ea58032a470e00"
+            ]
+        ]
+    },
+    {
+        "id": "04ea58032a470e00",
+        "type": "ui_chart",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "group": "166dc31e5cf12ee3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "disattivata",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "25",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#4b7930",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ec5b131a5f9608cd",
+        "type": "ui_chart",
+        "z": "b3f050e1857134a0",
+        "name": "",
+        "group": "49e3ddcad301ef2e",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "label": "rinviata",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "25",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#4b7930",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 680,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b4be68a9c65618b0",
+        "type": "mqtt-broker",
+        "name": "mosquitto",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "6a5d45f9bd6ff906",
+        "type": "ui_group",
+        "name": "Alarm-Control",
+        "tab": "1c9a4f31412d51ea",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "166dc31e5cf12ee3",
+        "type": "ui_group",
+        "name": "Chart Sveglia Disattivata",
+        "tab": "1c9a4f31412d51ea",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49e3ddcad301ef2e",
+        "type": "ui_group",
+        "name": "Chart Sveglia Rinviata",
+        "tab": "1c9a4f31412d51ea",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1c9a4f31412d51ea",
+        "type": "ui_tab",
+        "name": "Alarm-clock",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
